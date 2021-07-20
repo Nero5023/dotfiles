@@ -1,8 +1,29 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
 - clean: ['~']
 
+- clean:
+    ~/:
+      force: true
+    ~/.config:
+      recursive: true
+
+
 - link:
-    ~/.tmux.conf: tmux.conf
-    ~/.vimrc: vimrc
-    ~/.zshrc: zshrc
+    # tmux
+    ~/.tmux.conf: tmux/tmux.conf
 
+    # vim
+    ~/.vimrc: vim/vimrc
 
+    # zsh
+    ~/.zshrc: zsh/zshrc
+
+    # nvim
+    ~/.config/nvim/init.vim: nvim/init.vim
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
