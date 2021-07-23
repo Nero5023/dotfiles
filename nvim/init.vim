@@ -23,7 +23,9 @@ Plug 'itchyny/lightline.vim'          " Better Status Bar
 Plug 'mhinz/vim-startify'             " Better start screen
 Plug 'scrooloose/nerdtree'            " File explorer
 
-Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'        " Theme
+
+Plug 'yggdroot/indentline'            " Shows indentation levels
 
 " Autocomplete
 " Semantic language support
@@ -110,6 +112,12 @@ set softtabstop=4   " number of spaces in tab when editing
 set shiftwidth=4    " Insert 4 spaces on a tab
 set expandtab       " tabs are spaces, mainly because of python
 set softtabstop=4
+
+" =============================================================================
+"   PLUGIN CONFIG
+" =============================================================================
+"
+let g:indentLine_enabled = 0         " indentline
 
 " =============================================================================
 "  COC config
@@ -281,6 +289,16 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>u
 
 
+" =============================================================================
+"  press <leader> call run current python 
+" =============================================================================
+map <leader>r :call PRUN()<CR>
+func! PRUN()
+    exec "w" 
+    if &filetype == 'python'
+        exec "!python %"
+    endif
+endfunc
 
 " =============================================================================
 "   KEY MAPPING
