@@ -1,4 +1,5 @@
 set nocompatible
+let mapleader = "\<Space>"
 
 
 " =============================================================================
@@ -13,15 +14,23 @@ Plug 'editorconfig/editorconfig-vim'
 " Movement
 Plug 'easymotion/vim-easymotion'
 
+Plug 'takac/vim-hardtime' " Vim HardTime
+
+" Fuzzy finder
+Plug 'airblade/vim-rooter'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 Plug 'machakann/vim-highlightedyank'  " Highlight yanks
 Plug 'andymass/vim-matchup'           " Highlight corresponding blocks e.g. if - fi in bash
-Plug 'ctrlpvim/ctrlp.vim'             " Quick open
+" Plug 'ctrlpvim/ctrlp.vim'             " Quick open
 
 " GUI enhancements
 Plug 'itchyny/lightline.vim'          " Better Status Bar
 Plug 'mhinz/vim-startify'             " Better start screen
 Plug 'scrooloose/nerdtree'            " File explorer
+Plug 'psliwka/vim-smoothie'           " makes scrolling nice and smooth
+
 
 Plug 'chriskempson/base16-vim'        " Theme
 
@@ -33,7 +42,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " language syntax
 Plug 'vim-python/python-syntax'
+Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
 
+" Text Manipulation
+Plug 'tpope/vim-surround'             " Surround with parentheses & co
+Plug 'jiangmiao/auto-pairs'           " Auto comple for brackets, pairs
 call plug#end() 
 
 
@@ -105,6 +119,16 @@ set showmatch
 " set lightline.vim
 set laststatus=2
 
+" Permanent undo
+set undodir=~/.vimdid
+set undofile
+
+" Proper search
+set incsearch
+set ignorecase
+set smartcase
+set gdefault
+
 " Spaces & Tabs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set tabstop=4       " number of visual spaces per TAB
@@ -113,15 +137,25 @@ set shiftwidth=4    " Insert 4 spaces on a tab
 set expandtab       " tabs are spaces, mainly because of python
 set softtabstop=4
 
+
+" java
+let java_ignore_javadoc = 1
 " =============================================================================
 "   PLUGIN CONFIG
 " =============================================================================
 "
 let g:indentLine_enabled = 0         " indentline
+let g:hardtime_default_on = 0        " turn off hardmode
+
+"rsut 
+let g:rustfmt_autosave = 1           "enable automatic running of :RustFmt when you save a buffer.
 
 " =============================================================================
 "  COC config
 " =============================================================================
+" Disable transparent cursor when CocList is activated. 
+let g:coc_disable_transparent_cursor = 1
+
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
@@ -341,9 +375,9 @@ vnoremap <C-h> :nohlsearch<cr>
 nnoremap <C-h> :nohlsearch<cr>
 
 " Suspend with Ctrl+f
-inoremap <C-f> :sus<cr>
-vnoremap <C-f> :sus<cr>
-nnoremap <C-f> :sus<cr>
+" inoremap <C-f> :sus<cr>
+" vnoremap <C-f> :sus<cr>
+" nnoremap <C-f> :sus<cr>
 
 
 " Jump to start and end of line using the home row keys
@@ -358,3 +392,37 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
+" <leader>s for Rg search
+noremap <leader>s :Rg
+let g:fzf_layout = { 'down': '~20%' }
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+function! s:list_cmd()
+  let base = fnamemodify(expand('%'), ':h:.:S')
+  return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', shellescape(expand('%')))
+endfunction
+
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
+  \                               'options': '--tiebreak=index'}, <bang>0)
+
+" Open new file adjacent to current file
+nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+
+" map easymotion prefix
+map <Leader>/ <Plug>(easymotion-prefix)
+
+" <leader><leader> toggles between buffers
+nnoremap <leader><leader> <C-^>
+
+" Open hotkeys
+map <C-p> :Files<CR>
+nmap <leader>; :Buffers<CR>
+
+" Quick-save
+nmap <leader>w :w<CR>
