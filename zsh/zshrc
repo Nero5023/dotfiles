@@ -192,3 +192,18 @@ bindkey -M emacs '^N' history-substring-search-down
 
 # set $TERM, which is useful for tmux
 export TERM=xterm-256color
+
+
+# ==========================================================
+# fzf
+# ==========================================================
+# Setting fd as the default source for fzf
+export FZF_DEFAULT_COMMAND='fd --type file --follow'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND" 
+
+# ==========================================================
+# exa replacement for ls
+# ==========================================================
+alias l="exa -lah"
+alias ll="exa -lh"
+alias ls="exa -G"
