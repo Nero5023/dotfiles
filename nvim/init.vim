@@ -186,6 +186,10 @@ else
   set signcolumn=yes
 endif
 
+" ||||||||????????  don't know if it's right, when use nvim-0.5.0 i just want
+" use this setting, to allow diagnostic and line number show in the same time
+set signcolumn=yes:1
+
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
