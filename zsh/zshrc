@@ -207,3 +207,10 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 alias l="exa -lah"
 alias ll="exa -lh"
 alias ls="exa -G"
+
+
+# ==========================================================
+# riscv64 riscv
+# ==========================================================
+export PATH="$PATH:/usr/local/opt/riscv-gnu-toolchain/bin"
+
