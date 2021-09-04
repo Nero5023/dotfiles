@@ -397,13 +397,13 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 
 " <leader>s for Rg search
-noremap <leader>s :Rg
+noremap <leader>s :Rg<Space>
 let g:fzf_layout = { 'down': '~20%' }
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \           : fzf#vim#with_preview('right:50%', '?'),
   \   <bang>0)
 
 function! s:list_cmd()
@@ -413,7 +413,7 @@ endfunction
 
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
-  \                               'options': '--tiebreak=index'}, <bang>0)
+  \                               'options': ['--tiebreak=index', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}'] }, <bang>0)
 
 " Open new file adjacent to current file
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
