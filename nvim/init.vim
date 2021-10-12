@@ -1,6 +1,7 @@
 set nocompatible
 let mapleader = "\<Space>"
 
+set background=dark
 
 " =============================================================================
 "   PLUGINS
