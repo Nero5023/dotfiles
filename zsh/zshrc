@@ -165,8 +165,6 @@ alias grun='java org.antlr.v4.gui.TestRig'
 # cargo bin
 export PATH=$HOME/.cargo/bin:$PATH
 
-# flutter
-export export PATH=/Users/nero/local_dev/flutter/bin:$PATH
 export PATH="/usr/local/opt/binutils/bin:$PATH"
 
 # opam configuration
