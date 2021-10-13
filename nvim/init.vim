@@ -1,8 +1,6 @@
 set nocompatible
 let mapleader = "\<Space>"
 
-set background=dark
-
 " =============================================================================
 "   PLUGINS
 " =============================================================================
@@ -89,7 +87,7 @@ if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
   " screen does not (yet) support truecolor
   set termguicolors
 endif
-set background=dark
+" set background=dark
 let base16colorspace=256
 " let g:base16_shell_path="~/dev/others/base16/templates/shell/scripts/"
 colorscheme base16-gruvbox-dark-hard
@@ -138,6 +136,7 @@ set shiftwidth=4    " Insert 4 spaces on a tab
 set expandtab       " tabs are spaces, mainly because of python
 set softtabstop=4
 
+set background=dark
 
 " java
 let java_ignore_javadoc = 1
