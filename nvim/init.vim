@@ -149,7 +149,12 @@ let g:hardtime_default_on = 0        " turn off hardmode
 
 "rsut 
 let g:rustfmt_autosave = 1           "enable automatic running of :RustFmt when you save a buffer.
+" run file for rust file
+nnoremap <M-r> :RustRun<CR>
+" test for rust file
+nnoremap <M-t> :RustTest<CR>
 
+ 
 " =============================================================================
 "  COC config
 " =============================================================================
