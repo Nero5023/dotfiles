@@ -212,3 +212,5 @@ alias ls="exa -G"
 # ==========================================================
 export PATH="$PATH:/usr/local/opt/riscv-gnu-toolchain/bin"
 
+# biaon path
+export PATH="/usr/local/opt/bison/bin:$PATH"
