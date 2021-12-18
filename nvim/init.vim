@@ -29,6 +29,7 @@ Plug 'itchyny/lightline.vim'          " Better Status Bar
 Plug 'mhinz/vim-startify'             " Better start screen
 Plug 'scrooloose/nerdtree'            " File explorer
 Plug 'psliwka/vim-smoothie'           " makes scrolling nice and smooth
+Plug 'mhinz/vim-signify'              " indicate git added, modified and removed lines
 
 
 Plug 'chriskempson/base16-vim'        " Theme
