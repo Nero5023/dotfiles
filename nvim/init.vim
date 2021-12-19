@@ -391,16 +391,7 @@ local opts = {
     server = {
         -- on_attach is a callback called when the language server attachs to the buffer
         -- on_attach = on_attach,
-        settings = {
-            -- to enable rust-analyzer settings visit:
-            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-            ["rust-analyzer"] = {
-                -- enable clippy on save
-                checkOnSave = {
-                    command = "clippy"
-                },
-            }
-        }
+        settings = {}
     },
 }
 
@@ -490,18 +481,35 @@ local on_attach = function(client, bufnr)
 
 end
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
--- local servers = { 'pyright', 'rust_analyzer', 'tsserver' }
-local servers = {'rust_analyzer'}
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
+-- rust-analyzer config
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+nvim_lsp.rust_analyzer.setup {
     on_attach = on_attach,
     flags = {
-      debounce_text_changes = 150,
+        debounce_text_changes = 150,
+    },
+    settings = {
+        ["rust-analyzer"] = {
+            completion = {
+                postfix = {
+                    enable = false,
+                },
+            },
+            diagnostics = {
+                enable = true,
+                disabled = {
+                    -- disabled diagnostic except 3 but 1 errors
+                    -- const params not handle
+                    -- https://github.com/rust-analyzer/rust-analyzer/issues/8654
+                    "mismatched-arg-count",
+                },      
+                enableExperimental = true,
+            },
+        },
     }
-  }
-end
+}
+
+
 EOF
 
 " =============================================================================
