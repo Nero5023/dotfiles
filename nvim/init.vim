@@ -72,6 +72,10 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'ray-x/lsp_signature.nvim'
 " ==================================
 
+" Telescope
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 call plug#end() 
 
 
@@ -364,6 +368,15 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>u
 
+" =============================================================================
+"  telecope config
+" =============================================================================
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
 
 " =============================================================================
 "  LSP config
@@ -391,7 +404,8 @@ local opts = {
     server = {
         -- on_attach is a callback called when the language server attachs to the buffer
         -- on_attach = on_attach,
-        settings = {}
+        settings = {
+        }
     },
 }
 
@@ -509,6 +523,23 @@ nvim_lsp.rust_analyzer.setup {
     }
 }
 
+
+EOF
+
+lua << EOF
+local actions = require "telescope.actions"
+require('telescope').setup {
+    defaults = {
+        mappings = {
+            i = {
+                ["<C-j>"] = actions.close,
+            },
+            n = {
+                ["<C-j>"] = actions.close,
+            },
+        }
+    }
+}
 
 EOF
 
