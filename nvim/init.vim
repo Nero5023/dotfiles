@@ -81,6 +81,10 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 
+" Haskell
+Plug 'neovimhaskell/haskell-vim'
+
+
 call plug#end() 
 
 
@@ -434,8 +438,8 @@ cmp.setup({
     -- Add tab support
     ['<S-Tab>'] = cmp.mapping.select_prev_item(),
     ['<Tab>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({
@@ -524,6 +528,9 @@ nvim_lsp.rust_analyzer.setup {
                 },      
                 enableExperimental = true,
             },
+            checkOnSave = {
+                command = "clippy",     
+            }
         },
     }
 }
@@ -699,7 +706,8 @@ command! -bang -nargs=? -complete=dir Files
   \                               'options': ['--tiebreak=index', '--preview', '~/.config/nvim/plugged/fzf.vim/bin/preview.sh {}'] }, <bang>0)
 
 " Open new file adjacent to current file
-nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+" nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <leader>o :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " map easymotion prefix
 map <Leader>/ <Plug>(easymotion-prefix)
