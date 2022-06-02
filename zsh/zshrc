@@ -214,3 +214,6 @@ export PATH="$PATH:/usr/local/opt/riscv-gnu-toolchain/bin"
 
 # biaon path
 export PATH="/usr/local/opt/bison/bin:$PATH"
+
+# ghcup (haskell installer)
+[ -f "/Users/nero/.ghcup/env" ] && source "/Users/nero/.ghcup/env" # ghcup-env
