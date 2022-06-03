@@ -1,5 +1,8 @@
+lua require('globals')
+
+
 set nocompatible
-let mapleader = "\<Space>"
+"let mapleader = "\<Space>"
 
 " =============================================================================
 "   PLUGINS
@@ -114,28 +117,31 @@ if isdirectory($HOME . ".config/nvim/plugged/coc.nvim")
 endif
 
 
+
+lua require('colorscheme')
+
 " let base16colorspace=256 
 " colorscheme base16-gruvbox-dark-hard 
 " colorscheme base16-default-dark
 " deal with colors
-if !has('gui_running')
-  set t_Co=256
-endif
-if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
-  " screen does not (yet) support truecolor
-  set termguicolors
-endif
-" set background=dark
+" if !has('gui_running')
+"   set t_Co=256
+" endif
+" if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
+"   " screen does not (yet) support truecolor
+"  set termguicolors
+" endif
+" " set background=dark
 let base16colorspace=256
-" let g:base16_shell_path="~/dev/others/base16/templates/shell/scripts/"
+" " let g:base16_shell_path="~/dev/others/base16/templates/shell/scripts/"
 colorscheme base16-gruvbox-dark-hard
 syntax on
 hi Normal ctermbg=NONE
-" Brighter comments
+" " Brighter comments
 call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")
-" https://github.com/nvim-lua/lsp_extensions.nvim/issues/21
-" call Base16hi("CocHintSign", g:base16_gui03, "", g:base16_cterm03, "", "",
-" "")
+" " https://github.com/nvim-lua/lsp_extensions.nvim/issues/21
+" " call Base16hi("CocHintSign", g:base16_gui03, "", g:base16_cterm03, "", "",
+" " "")
 
 " =============================================================================
 "   SETTING
@@ -174,10 +180,10 @@ set shiftwidth=4    " Insert 4 spaces on a tab
 set expandtab       " tabs are spaces, mainly because of python
 set softtabstop=4
 
-set background=dark
+" set background=dark
 
 " java
-let java_ignore_javadoc = 1
+" let java_ignore_javadoc = 1
 " =============================================================================
 "   PLUGIN CONFIG
 " =============================================================================
