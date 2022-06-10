@@ -1,4 +1,4 @@
-lua require('globals')
+lua require('keymaps')
 
 
 set nocompatible
@@ -120,28 +120,6 @@ endif
 
 lua require('colorscheme')
 
-" let base16colorspace=256 
-" colorscheme base16-gruvbox-dark-hard 
-" colorscheme base16-default-dark
-" deal with colors
-" if !has('gui_running')
-"   set t_Co=256
-" endif
-" if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
-"   " screen does not (yet) support truecolor
-"  set termguicolors
-" endif
-" " set background=dark
-let base16colorspace=256
-" " let g:base16_shell_path="~/dev/others/base16/templates/shell/scripts/"
-colorscheme base16-gruvbox-dark-hard
-syntax on
-hi Normal ctermbg=NONE
-" " Brighter comments
-call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")
-" " https://github.com/nvim-lua/lsp_extensions.nvim/issues/21
-" " call Base16hi("CocHintSign", g:base16_gui03, "", g:base16_cterm03, "", "",
-" " "")
 
 " =============================================================================
 "   SETTING
@@ -149,41 +127,48 @@ call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")
 
 let g:python_highlight_all = 1
 
-filetype plugin indent on
-set number              " show line numbers
-set relativenumber      " show relative numbering
-set autoindent
-set smartindent
-set smarttab
-set ruler
-set expandtab
-set showmatch
+" ****************** start migriate """"""""""""
+
+" filetype plugin indent on
+
+lua require('globals')
+
+" set number              " show line numbers
+" set relativenumber      " show relative numbering
+" set autoindent
+" set smartindent
+" set smarttab
+" set ruler
+" set expandtab
+" set showmatch
 
 " set lightline.vim
-set laststatus=2
+" set laststatus=2
 
 " Permanent undo
-set undodir=~/.vimdid
-set undofile
+" set undodir=~/.vimdid
+" set undofile
 
 " Proper search
-set incsearch
-set ignorecase
-set smartcase
-set gdefault
+" set incsearch
+" set ignorecase
+" set smartcase
+" set gdefault
 
 " Spaces & Tabs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set tabstop=4       " number of visual spaces per TAB
-set softtabstop=4   " number of spaces in tab when editing
-set shiftwidth=4    " Insert 4 spaces on a tab
-set expandtab       " tabs are spaces, mainly because of python
-set softtabstop=4
+" set tabstop=4       " number of visual spaces per TAB
+" set softtabstop=4   " number of spaces in tab when editing
+" set shiftwidth=4    " Insert 4 spaces on a tab
+" set expandtab       " tabs are spaces, mainly because of python
+" set softtabstop=4
 
 " set background=dark
 
 " java
 " let java_ignore_javadoc = 1
+" ******************************** end of current migrating *******************
+
 " =============================================================================
 "   PLUGIN CONFIG
 " =============================================================================
