@@ -588,7 +588,7 @@ set nofoldenable
 " 300ms of no cursor movement to trigger CursorHold
 set updatetime=300
 " Show diagnostic popup on cursor hold
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+autocmd CursorHold * lua vim.diagnostic.open_float({scope="line"})
 " don't know why inlay hit not show use lua config before, here use this
 " method to show
 autocmd CursorHold *.rs :lua require('rust-tools.inlay_hints').set_inlay_hints()
