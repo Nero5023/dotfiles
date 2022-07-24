@@ -34,6 +34,7 @@ Plug 'scrooloose/nerdtree'            " File explorer
 Plug 'psliwka/vim-smoothie'           " makes scrolling nice and smooth
 Plug 'mhinz/vim-signify'              " indicate git added, modified and removed lines
 
+Plug 'MunifTanjim/nui.nvim'           " UI Component Library for Neovim.
 
 Plug 'chriskempson/base16-vim'        " Theme
 
@@ -87,6 +88,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
 
+" Misc
+Plug 'kassio/neoterm'                        " A neovim's terminal with steroids
+
 
 call plug#end() 
 
@@ -124,6 +128,11 @@ lua require('colorscheme')
 " =============================================================================
 "   SETTING
 " =============================================================================
+
+"  PLUGIN SETTING IN lua
+lua require('plugin/neoterm')
+
+
 
 let g:python_highlight_all = 1
 
