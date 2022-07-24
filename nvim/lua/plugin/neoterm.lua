@@ -3,15 +3,16 @@
 -- command
 -- :SetTaskCommand
 -- setting the cmd in `stored_task_command`
--- :TaskPersist
+-- :RunTask
 -- run cmd in `stored_task_command`, if not exit show nui input box to input
 
 
 vim.g.neoterm_size = tostring(0.3 * vim.o.columns)
 vim.g.neoterm_default_mod = 'botright vertical'
 
-vim.api.nvim_set_keymap("n", "<leader>ps", ":SetTaskCommand<CR>",{})
-vim.api.nvim_set_keymap("n", "<leader>pr", ":TaskPersist<CR>",{})
+-- right now not set key map for this command
+-- vim.api.nvim_set_keymap("n", "<leader>rr", ":SetTaskCommand<CR>",{})
+vim.api.nvim_set_keymap("n", "<leader>r", ":RunTask<CR>",{})
 
 local Input = require("nui.input")
 local event = require("nui.utils.autocmd").event
@@ -58,7 +59,7 @@ vim.api.nvim_create_user_command('SetTaskCommand', function()
 end, {})
 
 -- run cmd `stored_task_command`, if not set, then use nui input box to input
-vim.api.nvim_create_user_command('TaskPersist', function(input)
+vim.api.nvim_create_user_command('RunTask', function(input)
     local execute = function(cmd)
         -- clean input and then run command
         vim.api.nvim_command(":1Tclear")
@@ -66,7 +67,7 @@ vim.api.nvim_create_user_command('TaskPersist', function(input)
     end
 
     -- run 
-    -- :TaskPersist cmd_to_run
+    -- :RunTask cmd_to_run
     -- it will not reset the stored_task_command
     local one_off_command = input.args
 
