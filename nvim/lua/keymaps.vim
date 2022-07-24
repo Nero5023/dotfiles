@@ -5,7 +5,8 @@
 imap jj <Esc>
 
 " ; as :
-nnoremap ; :
+" nnoremap ; :
+" conflict with ; for do f search again
 
 " Ctrl+j and Ctrl+k as Esc
 " Ctrl-j is a little awkward unfortunately:
