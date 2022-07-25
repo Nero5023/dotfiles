@@ -187,9 +187,9 @@ let g:hardtime_default_on = 0        " turn off hardmode
 " rust 
 let g:rustfmt_autosave = 1           "enable automatic running of :RustFmt when you save a buffer.
 " run file for rust file
-nnoremap <M-r> :RustRun<CR>
+"  nnoremap <M-r> :RustRun<CR>
 " test for rust file
-nnoremap <M-t> :RustTest<CR>
+"  nnoremap <M-t> :RustTest<CR>
 " Set completeopt to have a better completion experience
 " :help completeopt
 " menuone: popup even when there's only one match
@@ -264,6 +264,7 @@ cmp.setup({
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
     -- Add tab support
+    -- shift + tab
     ['<S-Tab>'] = cmp.mapping.select_prev_item(),
     ['<Tab>'] = cmp.mapping.select_next_item(),
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
