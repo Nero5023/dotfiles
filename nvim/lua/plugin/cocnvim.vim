@@ -1,6 +1,31 @@
 " =============================================================================
 "  COC config
 " =============================================================================
+if isdirectory($HOME . ".config/nvim/plugged/coc.nvim")
+    call coc#add_extension(
+       \'coc-explorer',
+       \'coc-git',
+       \'coc-go',
+       \'coc-highlight',
+       \'coc-highlight',
+       \'coc-pyright',
+       \'coc-json',
+       \'coc-lua',
+       \'coc-prettier',
+       \'coc-rls',
+       \'coc-sh',
+       \'coc-tabnine',
+       \'coc-vimlsp',
+       \'coc-yaml',
+       \'coc-eslint',
+       \'coc-tsserver',
+       \'coc-xml',
+       \'coc-css',
+       \'coc-stylelint',
+       \'coc-python',
+     \)
+endif
+
 " Disable transparent cursor when CocList is activated. 
 let g:coc_disable_transparent_cursor = 1
 

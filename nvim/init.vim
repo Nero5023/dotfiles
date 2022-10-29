@@ -42,7 +42,7 @@ Plug 'yggdroot/indentline'            " Shows indentation levels
 
 " Autocomplete
 " Semantic language support
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " language syntax
 Plug 'vim-python/python-syntax'
@@ -52,6 +52,7 @@ Plug 'cespare/vim-toml'
 " Text Manipulation
 Plug 'tpope/vim-surround'             " Surround with parentheses & co
 Plug 'jiangmiao/auto-pairs'           " Auto comple for brackets, pairs
+Plug 'tpope/vim-commentary'           " Comment code
 
 " ============== nvim-lsp ==========
 " Collection of common configurations for the Nvim LSP client
@@ -68,9 +69,13 @@ Plug 'simrat39/rust-tools.nvim'
 
 " only because nvim-cmp require snippets
 " Snippet completion source for nvim-cmp
-Plug 'hrsh7th/cmp-vsnip'
+" Plug 'hrsh7th/cmp-vsnip'
 " Snippet engine
-Plug 'hrsh7th/vim-vsnip'
+" Plug 'hrsh7th/vim-vsnip'
+" Snippets
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+  
 
 " signature help
 Plug 'ray-x/lsp_signature.nvim'
@@ -93,33 +98,6 @@ Plug 'kassio/neoterm'                        " A neovim's terminal with steroids
 
 
 call plug#end() 
-
-
-if isdirectory($HOME . ".config/nvim/plugged/coc.nvim")
-    call coc#add_extension(
-       \'coc-explorer',
-       \'coc-git',
-       \'coc-go',
-       \'coc-highlight',
-       \'coc-highlight',
-       \'coc-pyright',
-       \'coc-json',
-       \'coc-lua',
-       \'coc-prettier',
-       \'coc-rls',
-       \'coc-sh',
-       \'coc-tabnine',
-       \'coc-vimlsp',
-       \'coc-yaml',
-       \'coc-eslint',
-       \'coc-tsserver',
-       \'coc-xml',
-       \'coc-css',
-       \'coc-stylelint',
-       \'coc-python',
-     \)
-endif
-
 
 
 lua require('colorscheme')
@@ -257,7 +235,8 @@ cmp.setup({
   -- Enable LSP snippets
   snippet = {
     expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body)
+        -- vim.fn["vsnip#anonymous"](args.body)
+        require('luasnip').lsp_expand(args.body)
     end,
   },
   mapping = {
@@ -280,7 +259,7 @@ cmp.setup({
   -- Installed sources
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'vsnip' },
+    { name = 'luasnip' },
     { name = 'path' },
     { name = 'buffer' },
   },
@@ -337,6 +316,7 @@ end
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 nvim_lsp.rust_analyzer.setup {
     on_attach = on_attach,
+    capabilities = capabilities,
     flags = {
         debounce_text_changes = 150,
     },
