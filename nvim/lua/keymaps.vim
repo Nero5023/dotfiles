@@ -77,3 +77,18 @@ nmap <leader>; :Buffers<CR>
 " Quick-save
 nmap <leader>w :w<CR>
 
+
+" Select all
+nnoremap <C-a> gg<S-v>G
+
+
+" =================== window =================
+" Split window
+nnoremap <silent> ss :split<CR>
+nnoremap <silent> sv :vsplit<CR>
+
+" window moving
+nnoremap sh <C-w>h
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
