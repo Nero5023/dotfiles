@@ -18,7 +18,7 @@ set.showmatch = true
 set.laststatus = 2
 
 -- Permanent undo
-set.undodir = '~/.vimdid'
+set.undodir =  vim.fn.expand('~/.vimdid')
 set.undofile = true
 
 -- Proper search
