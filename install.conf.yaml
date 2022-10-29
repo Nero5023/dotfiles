@@ -25,6 +25,7 @@
     # nvim
     ~/.config/nvim/init.vim: nvim/init.vim
     ~/.config/nvim/lua: nvim/lua
+    ~/.config/nvim/plugin: nvim/plugin
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
