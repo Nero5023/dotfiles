@@ -228,23 +228,6 @@ require('rust-tools').setup(opts)
 EOF
 
 
-lua << EOF
-local actions = require "telescope.actions"
-require('telescope').setup {
-    defaults = {
-        mappings = {
-            i = {
-                ["<C-j>"] = actions.close,
-            },
-            n = {
-                ["<C-j>"] = actions.close,
-            },
-        }
-    }
-}
-
-EOF
-
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set nofoldenable
