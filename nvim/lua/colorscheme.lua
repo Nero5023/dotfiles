@@ -21,6 +21,7 @@ vim.cmd [[
     call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")
     " https://github.com/nvim-lua/lsp_extensions.nvim/issues/21
     " call Base16hi("CocHintSign", g:base16_gui03, "", g:base16_cterm03, "", "", "")
+    set background=dark
 ]]
 
 
