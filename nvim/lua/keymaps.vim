@@ -54,6 +54,11 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
+inoremap <C-f> <right>
+inoremap <C-b> <left>
+inoremap <C-p> <up>
+inoremap <C-n> <down>
+
 
 " Open new file adjacent to current file
 " nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
