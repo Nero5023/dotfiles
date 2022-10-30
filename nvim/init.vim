@@ -45,7 +45,6 @@ Plug 'yggdroot/indentline'            " Shows indentation levels
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " language syntax
-Plug 'vim-python/python-syntax'
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 
