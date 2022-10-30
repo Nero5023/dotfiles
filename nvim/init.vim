@@ -193,39 +193,6 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 
-" =============================================================================
-"  LSP config
-" =============================================================================
-" Configure LSP through rust-tools.nvim plugin.
-" rust-tools will configure and enable certain LSP features for us.
-" See https://github.com/simrat39/rust-tools.nvim#configuration
-lua <<EOF
-local nvim_lsp = require'lspconfig'
-
-local opts = {
-    tools = { -- rust-tools options
-        autoSetHints = true,
-        hover_with_actions = true,
-        inlay_hints = {
-            show_parameter_hints = false,
-            parameter_hints_prefix = "",
-            other_hints_prefix = "",
-        },
-    },
-
-    -- all the opts to send to nvim-lspconfig
-    -- these override the defaults set by rust-tools.nvim
-    -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
-    server = {
-        -- on_attach is a callback called when the language server attachs to the buffer
-        -- on_attach = on_attach,
-        settings = {
-        }
-    },
-}
-
-require('rust-tools').setup(opts)
-EOF
 
 
 set foldmethod=expr
@@ -240,12 +207,12 @@ set nofoldenable
 
 " Set updatetime for CursorHold
 " 300ms of no cursor movement to trigger CursorHold
-set updatetime=300
-" Show diagnostic popup on cursor hold
-autocmd CursorHold * lua vim.diagnostic.open_float({scope="line"})
-" don't know why inlay hit not show use lua config before, here use this
-" method to show
-autocmd CursorHold *.rs :lua require('rust-tools.inlay_hints').set_inlay_hints()
+"  set updatetime=300
+"  " Show diagnostic popup on cursor hold
+"  autocmd CursorHold * lua vim.diagnostic.open_float({scope="line"})
+"  " don't know why inlay hit not show use lua config before, here use this
+"  " method to show
+"  autocmd CursorHold *.rs :lua require('rust-tools.inlay_hints').set_inlay_hints()
 
 " Enable type inlay hints
 " autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }
