@@ -27,5 +27,13 @@
     ~/.config/nvim/lua: nvim/lua
     ~/.config/nvim/plugin: nvim/plugin
 
+    # need chmod +x for next three config script
+    # yabai
+    ~/.config/yabai: yabai
+    # skhd
+    ~/.config/skhd: skhd
+    # limelight
+    ~/.config/limelight: limelight
+
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
