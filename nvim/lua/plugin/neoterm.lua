@@ -7,8 +7,10 @@
 -- run cmd in `stored_task_command`, if not exit show nui input box to input
 
 
-vim.g.neoterm_size = tostring(0.3 * vim.o.columns)
-vim.g.neoterm_default_mod = 'botright vertical'
+-- vim.g.neoterm_size = tostring(0.3 * vim.o.columns)
+-- vim.g.neoterm_default_mod = 'botright vertical'
+vim.g.neoterm_size = tostring(0.3 * vim.o.lines)
+vim.g.neoterm_default_mod = 'botright'
 
 -- right now not set key map for this command
 -- vim.api.nvim_set_keymap("n", "<leader>rr", ":SetTaskCommand<CR>",{})

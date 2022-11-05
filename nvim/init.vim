@@ -75,18 +75,23 @@ Plug 'simrat39/rust-tools.nvim'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
   
-
 " signature help
 Plug 'ray-x/lsp_signature.nvim'
+
+" Easily install and manage LSP servers, DAP servers, linters, and formatters.
+Plug 'williamboman/mason.nvim'
 " ==================================
 
 " Telescope
-Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/plenary.nvim' 
 Plug 'nvim-telescope/telescope.nvim'
 
 
 " nvim-treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+
+" harpoon
+Plug 'ThePrimeagen/harpoon'
 
 
 " Haskell
@@ -153,6 +158,9 @@ lua require('globals')
 "   PLUGIN CONFIG
 " =============================================================================
 "
+
+" set up Mason
+lua require("mason").setup()
 
 "  PLUGIN SETTING IN lua
 lua require('plugin/neoterm')
