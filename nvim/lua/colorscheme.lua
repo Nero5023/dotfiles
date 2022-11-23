@@ -11,17 +11,18 @@ if (vim.fn.match(vim.env.TERM, "-256color") ~= -1) and (vim.fn.match(vim.env.TER
 end
 
 vim.g.base16colorspace = 256
+-- no use here, so set in vim.cmd
 set.background = "dark"
 
 vim.cmd [[
-    colorscheme base16-gruvbox-dark-hard
+    " colorscheme base16-gruvbox-dark-hard
+    colorscheme gruvbox
     syntax on
     hi Normal ctermbg=NONE
     " Brighter comments
-    call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")
+    " call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")
     " https://github.com/nvim-lua/lsp_extensions.nvim/issues/21
     " call Base16hi("CocHintSign", g:base16_gui03, "", g:base16_cterm03, "", "", "")
-    set background=dark
 ]]
 
 

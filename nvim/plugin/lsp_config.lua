@@ -41,7 +41,12 @@ local on_attach = function(client, bufnr)
     -- Get signatures (and _only_ signatures) when in argument lists.
     require"lsp_signature".on_attach({
         doc_lines = 0,
+        hint_enable = true,
         hint_prefix = "👾",
+        hint_scheme = "String",
+        floating_window_off_x = 1,
+        floating_window_off_y = 0,
+        hi_parameter = "LspSignatureActiveParameter", -- how your parameter will be highlight
         handler_opts = {
             border = "none"
         }

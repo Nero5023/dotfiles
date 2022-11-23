@@ -27,18 +27,22 @@ Plug 'machakann/vim-highlightedyank'  " Highlight yanks
 Plug 'andymass/vim-matchup'           " Highlight corresponding blocks e.g. if - fi in bash
 " Plug 'ctrlpvim/ctrlp.vim'             " Quick open
 
-" GUI enhancements
+" ================= GUI enhancements  ==========================
 Plug 'itchyny/lightline.vim'          " Better Status Bar
 Plug 'mhinz/vim-startify'             " Better start screen
-Plug 'scrooloose/nerdtree'            " File explorer
+Plug 'nvim-tree/nvim-web-devicons'    " optional, for file icons
+Plug 'nvim-tree/nvim-tree.lua'        " A File Explorer For Neovim Written In Lua
 Plug 'psliwka/vim-smoothie'           " makes scrolling nice and smooth
 Plug 'mhinz/vim-signify'              " indicate git added, modified and removed lines
 
 Plug 'MunifTanjim/nui.nvim'           " UI Component Library for Neovim.
 
 Plug 'chriskempson/base16-vim'        " Theme
+Plug 'ellisonleao/gruvbox.nvim'       "  the most famous vim colorscheme
 
 Plug 'yggdroot/indentline'            " Shows indentation levels
+
+" ============================================================
 
 " Autocomplete
 " Semantic language support
@@ -78,6 +82,7 @@ Plug 'saadparwaiz1/cmp_luasnip'
 " signature help
 Plug 'ray-x/lsp_signature.nvim'
 
+" Manage LSP
 " Easily install and manage LSP servers, DAP servers, linters, and formatters.
 Plug 'williamboman/mason.nvim'
 " ==================================
